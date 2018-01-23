@@ -1,15 +1,14 @@
 'use strict';
-/* global index, Store, VideoList, Api, $*/
+/* global index, store, VideoList, api, $*/
 const VideoList = (function(){
   function generateListItem(video){
-  return  `
+    return  `
     <li>
        <h2 class = "js-title">${video.title}</h2>
        <img class = "js-img" src="${video.thumbnail.url}">
     </li>`;
-}
+  }
   function render(){
-    console.log(store);
     const videoElements = store.videos.map(generateListItem);
     $('.results').html(videoElements);
   }
@@ -30,9 +29,9 @@ const VideoList = (function(){
       $('#search-term').val('');
       api.fetchVideos(searchVal, videos => {
         const decorateVideos = decorateResponse(videos);
-      store.setVideos(decorateVideos);
-      render();
-    });
+        store.setVideos(decorateVideos);
+        render();
+      });
     });
   }
   function bindEventListeners()
@@ -43,6 +42,5 @@ const VideoList = (function(){
     generateListItem,
     render,
     bindEventListeners,
-    hello: "world"
   };
 })();

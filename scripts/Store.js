@@ -10,7 +10,6 @@ const store = (function () {
 
   return {
     videos,
-    hello: 'world',
     setVideos,
   };
 

@@ -1,7 +1,7 @@
 'use strict';
-
+/* global index, store, VideoList, api, $*/
 // const API_KEY = 'AIzaSyATzDRzDQq8VAeRbF7TAI5vJIQlSSsWF58';
-const URL = 'https://www.googleapis.com/youtube/v3/search';
+// const URL = 'https://www.googleapis.com/youtube/v3/search';
 
 // // const store = {
 // //   videos: []
@@ -100,6 +100,6 @@ const URL = 'https://www.googleapis.com/youtube/v3/search';
 $(function () {
   // TASK:
   // 1. Run `handleFormSubmit` to bind the event listener to the DOM
-  VideoList.bindEventListeners()
+  VideoList.bindEventListeners();
 });
 
