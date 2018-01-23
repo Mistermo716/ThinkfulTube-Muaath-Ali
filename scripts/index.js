@@ -39,23 +39,14 @@ const fetchVideos = function (searchTerm, callback) {
 // WILL have to dig into several nested properties!
 // TEST IT! Grab an example API response and send it into the function - make sure
 // you get back the object you want.
-<<<<<<< HEAD
 const decorateResponse = function(response) {
   return response.items.map(val => {
-=======
-const decorateResponse = function (response) {
-  store.videos = response.items.map(val => {
->>>>>>> 61eeae013948db996ead3f9ccd2e31a9dd09f301
     return {
       id: val.id,
       title: val.snippet.title,
       thumbnail: val.snippet.thumbnails.default
     };
   });
-<<<<<<< HEAD
-=======
-  console.log(generateVideoItemHtml(store));
->>>>>>> 61eeae013948db996ead3f9ccd2e31a9dd09f301
 };
 
 // TASK:
@@ -74,13 +65,8 @@ const generateVideoItemHtml = function (video) {
 // 1. Create a `addVideosToStore` function that receives an array of decorated video 
 // objects and sets the array as the value held in store.items
 // TEST IT!
-<<<<<<< HEAD
 const addVideosToStore = function(videos) {
   store.videos = videos;
-=======
-const addVideosToStore = function (videos) {
-
->>>>>>> 61eeae013948db996ead3f9ccd2e31a9dd09f301
 };
 
 // TASK:
@@ -88,14 +74,9 @@ const addVideosToStore = function (videos) {
 // 2. Map through `store.videos`, sending each `video` through your `generateVideoItemHtml`
 // 3. Add your array of DOM elements to the appropriate DOM element
 // TEST IT!
-<<<<<<< HEAD
 const render = function() {
   const videoElements = store.videos.map(generateVideoItemHtml);
   $('.results').html(videoElements);
-=======
-const render = function () {
-
->>>>>>> 61eeae013948db996ead3f9ccd2e31a9dd09f301
 };
 
 // TASK:
