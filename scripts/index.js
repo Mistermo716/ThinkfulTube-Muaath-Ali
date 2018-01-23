@@ -1,4 +1,7 @@
+'use strict';
+
 const API_KEY = 'AIzaSyATzDRzDQq8VAeRbF7TAI5vJIQlSSsWF58';
+const URL = 'https://www.googleapis.com/youtube/v3/search';
 
 const store = {
   videos: []
@@ -14,7 +17,18 @@ const BASE_URL = '';
 // 3. Make a getJSON call using the query object and sending the provided callback in as the last argument
 // TEST IT! Execute this function and console log the results inside the callback.
 const fetchVideos = function(searchTerm, callback) {
-
+  const search = {
+    part: 'snippet',
+    key: API_KEY,
+    q: 'thinkful'
+  };
+  $.getJSON(URL, search, data => decorateResponse(data));
+  // const search = {
+  //   part: 'snippet',
+  //   key: API_KEY,
+  //   q: searchTerm
+  // };
+  // $.getJSON(URL, search, callback);
 };
 
 // TASK:
@@ -26,7 +40,14 @@ const fetchVideos = function(searchTerm, callback) {
 // TEST IT! Grab an example API response and send it into the function - make sure
 // you get back the object you want.
 const decorateResponse = function(response) {
-
+  const items = response.items.map(val => {
+    return {
+      id: val.id,
+      title: val.snippet.title,
+      thumbnail: val.snippet.thumbnails.default
+    };
+  });
+  console.log(items);
 };
 
 // TASK:
@@ -73,5 +94,6 @@ const handleFormSubmit = function() {
 $(function () {
   // TASK:
   // 1. Run `handleFormSubmit` to bind the event listener to the DOM
+  fetchVideos();
 });
 
