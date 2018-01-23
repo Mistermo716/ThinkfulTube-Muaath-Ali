@@ -16,7 +16,7 @@ const BASE_URL = '';
 // 2. Use `searchTerm` to construct the right query object based on the Youtube API docs
 // 3. Make a getJSON call using the query object and sending the provided callback in as the last argument
 // TEST IT! Execute this function and console log the results inside the callback.
-const fetchVideos = function(searchTerm, callback) {
+const fetchVideos = function (searchTerm, callback) {
   const search = {
     part: 'snippet',
     key: API_KEY,
@@ -39,21 +39,30 @@ const fetchVideos = function(searchTerm, callback) {
 // WILL have to dig into several nested properties!
 // TEST IT! Grab an example API response and send it into the function - make sure
 // you get back the object you want.
+<<<<<<< HEAD
 const decorateResponse = function(response) {
   return response.items.map(val => {
+=======
+const decorateResponse = function (response) {
+  store.videos = response.items.map(val => {
+>>>>>>> 61eeae013948db996ead3f9ccd2e31a9dd09f301
     return {
       id: val.id,
       title: val.snippet.title,
       thumbnail: val.snippet.thumbnails.default
     };
   });
+<<<<<<< HEAD
+=======
+  console.log(generateVideoItemHtml(store));
+>>>>>>> 61eeae013948db996ead3f9ccd2e31a9dd09f301
 };
 
 // TASK:
 // 1. Create a `generateVideoItemHtml` function that receives the decorated object
 // 2. Using the object, return an HTML string containing all the expected data
 // TEST IT!
-const generateVideoItemHtml = function(video) {
+const generateVideoItemHtml = function (video) {
   return `<li>
             <h2 class = "js-title">${video.videos[0].title}</h2>
             <img class = "js-img" src="${video.videos[0].thumbnail.url}">
@@ -65,8 +74,13 @@ const generateVideoItemHtml = function(video) {
 // 1. Create a `addVideosToStore` function that receives an array of decorated video 
 // objects and sets the array as the value held in store.items
 // TEST IT!
+<<<<<<< HEAD
 const addVideosToStore = function(videos) {
   store.videos = videos;
+=======
+const addVideosToStore = function (videos) {
+
+>>>>>>> 61eeae013948db996ead3f9ccd2e31a9dd09f301
 };
 
 // TASK:
@@ -74,9 +88,14 @@ const addVideosToStore = function(videos) {
 // 2. Map through `store.videos`, sending each `video` through your `generateVideoItemHtml`
 // 3. Add your array of DOM elements to the appropriate DOM element
 // TEST IT!
+<<<<<<< HEAD
 const render = function() {
   const videoElements = store.videos.map(generateVideoItemHtml);
   $('.results').html(videoElements);
+=======
+const render = function () {
+
+>>>>>>> 61eeae013948db996ead3f9ccd2e31a9dd09f301
 };
 
 // TASK:
@@ -90,7 +109,7 @@ const render = function() {
 //   f) Inside the callback, add the decorated response into your store using the `addVideosToStore` function
 //   g) Inside the callback, run the `render` function 
 // TEST IT!
-const handleFormSubmit = function() {
+const handleFormSubmit = function () {
 
 };
 
