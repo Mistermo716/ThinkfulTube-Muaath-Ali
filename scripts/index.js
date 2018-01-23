@@ -22,7 +22,8 @@ const fetchVideos = function (searchTerm, callback) {
     key: API_KEY,
     q: 'thinkful'
   };
-  $.getJSON(URL, search, data => decorateResponse(data));
+  $.getJSON(URL, search, decorateResponse);
+  
   // const search = {
   //   part: 'snippet',
   //   key: API_KEY,
@@ -40,25 +41,27 @@ const fetchVideos = function (searchTerm, callback) {
 // TEST IT! Grab an example API response and send it into the function - make sure
 // you get back the object you want.
 const decorateResponse = function(response) {
-  return response.items.map(val => {
+  const test = response.items.map(val => {
     return {
       id: val.id,
       title: val.snippet.title,
       thumbnail: val.snippet.thumbnails.default
     };
   });
+  addVideosToStore(test);
+  render();
 };
 
 // TASK:
 // 1. Create a `generateVideoItemHtml` function that receives the decorated object
 // 2. Using the object, return an HTML string containing all the expected data
 // TEST IT!
-const generateVideoItemHtml = function (video) {
-  return `<li>
-            <h2 class = "js-title">${video.videos[0].title}</h2>
-            <img class = "js-img" src="${video.videos[0].thumbnail.url}">
-          </li>`;
-
+const generateVideoItemHtml = function(video) {
+  return  `
+    <li>
+       <h2 class = "js-title">${video.title}</h2>
+       <img class = "js-img" src="${video.thumbnail.url}">
+    </li>`;
 };
 
 // TASK:
@@ -91,7 +94,10 @@ const render = function() {
 //   g) Inside the callback, run the `render` function 
 // TEST IT!
 const handleFormSubmit = function () {
-
+  $('.js-button').submit(function(e) {
+    e.preventDefault();
+    console.log('click working');
+  });
 };
 
 // When DOM is ready:
