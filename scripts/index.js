@@ -94,10 +94,14 @@ const render = function() {
 //   g) Inside the callback, run the `render` function 
 // TEST IT!
 const handleFormSubmit = function () {
-  $('.js-button').click(function(event) {
+  // $('.js-button').click(function(event) {
+  //   event.preventDefault();
+  //   console.log('something');
+  // })
+  $('form').on('click', '.js-button', function(event){
     event.preventDefault();
-    console.log('something');
-  })
+    console.log('click');
+  });
 };
 
 // When DOM is ready:
@@ -105,5 +109,6 @@ $(function () {
   // TASK:
   // 1. Run `handleFormSubmit` to bind the event listener to the DOM
   fetchVideos();
+  handleFormSubmit();
 });
 
