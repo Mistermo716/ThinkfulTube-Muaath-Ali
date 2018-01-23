@@ -40,14 +40,13 @@ const fetchVideos = function(searchTerm, callback) {
 // TEST IT! Grab an example API response and send it into the function - make sure
 // you get back the object you want.
 const decorateResponse = function(response) {
-  store.videos = response.items.map(val => {
-      return {
+  return response.items.map(val => {
+    return {
       id: val.id,
       title: val.snippet.title,
       thumbnail: val.snippet.thumbnails.default
-    }
-    });
-  console.log(generateVideoItemHtml(store));
+    };
+  });
 };
 
 // TASK:
@@ -67,7 +66,7 @@ const generateVideoItemHtml = function(video) {
 // objects and sets the array as the value held in store.items
 // TEST IT!
 const addVideosToStore = function(videos) {
-
+  store.videos = videos;
 };
 
 // TASK:
@@ -76,7 +75,8 @@ const addVideosToStore = function(videos) {
 // 3. Add your array of DOM elements to the appropriate DOM element
 // TEST IT!
 const render = function() {
-
+  const videoElements = store.videos.map(generateVideoItemHtml);
+  $('.results').html(videoElements);
 };
 
 // TASK:
