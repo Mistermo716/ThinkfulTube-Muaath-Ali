@@ -17,19 +17,19 @@ const BASE_URL = '';
 // 3. Make a getJSON call using the query object and sending the provided callback in as the last argument
 // TEST IT! Execute this function and console log the results inside the callback.
 const fetchVideos = function (searchTerm, callback) {
-  const search = {
-    part: 'snippet',
-    key: API_KEY,
-    q: 'thinkful'
-  };
-  $.getJSON(URL, search, decorateResponse);
-  
   // const search = {
   //   part: 'snippet',
   //   key: API_KEY,
-  //   q: searchTerm
+  //   q: 'thinkful'
   // };
-  // $.getJSON(URL, search, callback);
+  // $.getJSON(URL, search, decorateResponse);
+  
+  const search = {
+    part: 'snippet',
+    key: API_KEY,
+    q: searchTerm
+  };
+  $.getJSON(URL, search, callback);
 };
 
 // TASK:
@@ -101,6 +101,9 @@ const handleFormSubmit = function () {
   $('form').on('click', '.js-button', function(event){
     event.preventDefault();
     console.log('click');
+    const searchVal = $('#search-term').val();
+    $('#search-term').val('');
+    fetchVideos(searchVal, decorateResponse);
   });
 };
 
@@ -108,7 +111,6 @@ const handleFormSubmit = function () {
 $(function () {
   // TASK:
   // 1. Run `handleFormSubmit` to bind the event listener to the DOM
-  fetchVideos();
   handleFormSubmit();
 });
 
