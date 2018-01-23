@@ -94,10 +94,10 @@ const render = function() {
 //   g) Inside the callback, run the `render` function 
 // TEST IT!
 const handleFormSubmit = function () {
-  $('.js-button').submit(function(e) {
-    e.preventDefault();
-    console.log('click working');
-  });
+  $('.js-button').click(function(event) {
+    event.preventDefault();
+    console.log('something');
+  })
 };
 
 // When DOM is ready:
